@@ -32,7 +32,6 @@ REQUIRED = [
 
 # What packages are optional?
 EXTRAS = {
-    "interactive html plots": ["bokeh",],
 }
 
 PACKAGE_DATA = {"fynesse": ["defaults.yml"]}
