@@ -148,6 +148,9 @@ def get_pois_labels(north: float, south: float, east: float, west: float, buffer
         # Conjunction of required tags
         flag = np.full(len(pois), False)
         for k, v in label_tags.items():
+            if not(k in pois_raw.columns):
+                continue
+
             if isinstance(v, bool):
                 flag = flag | (~pois_raw[k].isna().values)
             else:
