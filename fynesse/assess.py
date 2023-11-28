@@ -243,9 +243,12 @@ def get_pc_bbox(db, north, south, east, west, min_year: Optional[int] = None, ma
     # Encode categorical columns 
     gdf['new_build'] = (gdf['new_build_flag'] == 'Y').astype(int)
     gdf['freehold'] = (gdf['tenure_type'] == 'F').astype(int)
-    gdf = gdf.join(pd.get_dummies(gdf['property_type']).astype(int).rename({
-        'D': 'detached', 'S': 'semidetached', 'T': 'terraced', 'F': 'flat', 'O': 'other'
-    }, axis=1))
+    gdf['detached'] = (gdf['property_type'] == 'D').astype(int)
+    gdf['semidetached'] = (gdf['property_type'] == 'S').astype(int)
+    gdf['terraced'] = (gdf['property_type'] == 'T').astype(int)
+    gdf['flat'] = (gdf['property_type'] == 'F').astype(int)
+    gdf['other'] = (gdf['property_type'] == 'O').astype(int)
+
     gdf = gdf.drop(['new_build_flag', 'tenure_type', 'property_type'], axis=1)
 
     return gdf
