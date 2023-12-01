@@ -29,7 +29,7 @@ VERSION = "0.1.0"
 REQUIRED = [
     "pandas", "numpy", "jupyter", "matplotlib",
     "pymysql", "geopandas", "statsmodels", "osmnx",  
-    "seaborn", "sklearn"
+    "seaborn", "scikit-learn"
 ]
 
 # What packages are optional?
